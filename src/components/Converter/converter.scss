@@ -1,0 +1,16 @@
+.header {
+  font-family: 'Spartan', sans-serif;
+  background-color: #bb5432;
+  color: white;
+  padding: 2em;
+  .header-title {
+    font-size: 2.5em;
+    font-family: Spartan;
+    font-weight: bold;
+  }
+  .header-info {
+    font-size: 1.5em;
+    margin-top: 0.5em;
+    font-family: Spartan;
+  }
+}

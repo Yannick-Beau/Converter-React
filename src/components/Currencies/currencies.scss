@@ -1,0 +1,21 @@
+.currencies {
+  border: none;
+  width: 100%;
+  color: #bb5432;
+  &:focus {
+    outline: none;
+  }
+  .currency {
+    border-bottom: 1px solid #f1c5b6;
+    padding: 0.5em;
+    font-size: 1.5em;
+    font-family: Spartan;
+    &:hover {
+      background-color: rgba($color: #bb5432, $alpha: 0.5);
+    }
+    &:first-child {
+      font-weight: bold;
+    }
+  }
+  
+}
