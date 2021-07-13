@@ -1,15 +1,16 @@
+@use 'src/styles/vars';
+
 .footer {
-  background-color: white;
-  color: #bb5432;
-  font-family: Spartan;
-  padding: 1.9em;
+  background-color: vars.$lightColor;
+  color: vars.$mainColor;
+  padding: vars.$gutter * 2;
   .footer-number {
     font-size: 2.5em;
-    font-weight: bold;
+    font-weight: vars.$fwBold;
     
   }
   .footer-currency {
-    margin: 0.5em;
+    margin: vars.$gutter;
     font-size: 1.5em;
   }
 }
