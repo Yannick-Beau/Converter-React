@@ -2,8 +2,10 @@
 @use 'vars';
 
 body {
-  font-family: sans-serif;
-  background-color: #f1c5b6;
+  font-family: 'Spartan', sans-serif;
+  font-weight: vars.$fwLight;
+  background-color: vars.$altColor;
+  color: vars.$mainColor;
 }
 
 /* 

@@ -2,7 +2,7 @@
 import React from 'react';
 
 // == Import
-import './styles.css';
+import './styles.scss';
 
 import Converter from 'src/components/Converter';
 import Currencies from 'src/components/Currencies';

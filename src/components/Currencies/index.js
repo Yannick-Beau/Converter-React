@@ -18,7 +18,7 @@ Currencies.propTypes = {
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
-      rate: PropTypes.number.isRequired, // obligatoire que quantity soit un nombre
+      rate: PropTypes.number.isRequired, // obligatoire que rate soit un nombre
     }).isRequired, // obligatoire de respecter le format
   ).isRequired, // la prop ingredients est obligatoire
 };

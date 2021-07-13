@@ -1,16 +1,14 @@
+@use 'src/styles/vars';
 .header {
-  font-family: 'Spartan', sans-serif;
-  background-color: #bb5432;
-  color: white;
-  padding: 2em;
+  background-color: vars.$mainColor;
+  color: vars.$lightColor;
+  padding: vars.$gutter * 2;
   .header-title {
-    font-size: 2.5em;
-    font-family: Spartan;
-    font-weight: bold;
+    font-size: 2em;
+    font-weight: vars.$fwBold;
   }
   .header-info {
     font-size: 1.5em;
-    margin-top: 0.5em;
-    font-family: Spartan;
+    margin-top: vars.$gutter;
   }
 }

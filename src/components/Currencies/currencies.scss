@@ -1,20 +1,24 @@
+@use 'src/styles/vars';
+
 .currencies {
   border: none;
   width: 100%;
-  color: #bb5432;
+  color: vars.$mainColor;
   &:focus {
     outline: none;
   }
   .currency {
-    border-bottom: 1px solid #f1c5b6;
-    padding: 0.5em;
+    border-bottom: 1px solid vars.$altColor;
+    padding: vars.$gutter;
     font-size: 1.5em;
-    font-family: Spartan;
+    font-weight: vars.$fwMedium;
+    transition: background-color vars.$slowTransition;
     &:hover {
-      background-color: rgba($color: #bb5432, $alpha: 0.5);
+      background-color: rgba($color: vars.$mainColor, $alpha: 0.5);
+      transition: background-color vars.$fastTransition;
     }
     &:first-child {
-      font-weight: bold;
+      font-weight: vars.$fwBold;
     }
   }
   
