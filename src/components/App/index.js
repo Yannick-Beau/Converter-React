@@ -19,10 +19,16 @@ variable pour modifier l'affichage
 
 // == Composant
 class App extends React.Component {
-  render() {
-    // indique si les devises sont affichées
-    let open = true;
+  constructor(props) {
+    // fait appel au constructor de React.Component
+    super(props);
 
+    // initialisation du state (objet)
+    this.state = {
+      open: true,
+    };
+  }
+  render() {
     /*
     on voudrait faire quelque chose comme ça :
     if (open === true) <Currencies currencies={currenciesList} />
@@ -43,6 +49,7 @@ class App extends React.Component {
     Si la variable est un booléen on peut optimiser :
     {open && <Currencies currencies={currenciesList} />}
     */
+    const { open } = this.state;
     return(
       <div className="app">
         <Converter />
@@ -51,7 +58,9 @@ class App extends React.Component {
             onClick={() => {
               console.log('clic !');
               // négation de la valeur de open : si open est false, !open est true
-              open = !open;
+              this.setState({
+                open: !open,
+              });
             }}
           >
             Toggle currencies
