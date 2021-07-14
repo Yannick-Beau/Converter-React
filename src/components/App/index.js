@@ -46,6 +46,7 @@ class App extends React.Component {
     this.state = {
       // indique si les devises sont affichées
       open: true,
+      switchToChangeAmount: false,
       baseAmount: 1,
       currency: 'United States Dollar',
     };
@@ -58,6 +59,9 @@ class App extends React.Component {
     // on remplace la méthode handleClick par sa version améliorée à laquelle on
     // a attaché this
     this.handleClick = this.handleClick.bind(this);
+    this.handleClickOnCurrency = this.handleClickOnCurrency.bind(this);
+    this.handleClickOnBaseAmount = this.handleClickOnBaseAmount.bind(this);
+    this.handleChangeAmount = this.handleChangeAmount.bind(this);
   }
 
   // handler pour quand on clique sur le bouton
@@ -86,6 +90,31 @@ class App extends React.Component {
     // console.log(this.state.open);
   }
 
+  handleChangeAmount(event) {
+    const { switchToChangeAmount } = this.state;
+    this.setState({
+      switchToChangeAmount: !switchToChangeAmount,
+      baseAmount: parseInt(event.target.value, 10),
+    });
+  }
+
+  handleClickOnBaseAmount() {
+    const { switchToChangeAmount } = this.state;
+    console.log(switchToChangeAmount);
+    console.log('clic sur baseAmount');
+    this.setState({
+      switchToChangeAmount: !switchToChangeAmount,
+    });
+    console.log(switchToChangeAmount);
+  }
+
+  handleClickOnCurrency(event) {
+    console.log('clic sur une currency !');
+    this.setState({
+      currency: event.target.textContent,
+    });
+  }
+
   computeAmount() {
     const { baseAmount, currency } = this.state;
 
@@ -97,7 +126,7 @@ class App extends React.Component {
     const rate = selectedCurrency.rate;
 
     // multiplier le montant de base par le taux de conversion
-    const result = baseAmount * rate;
+    const result = (baseAmount * rate).toFixed(3);
 
     return result;
   }
@@ -125,19 +154,19 @@ class App extends React.Component {
     {open && <Currencies currencies={currenciesList} />}
     */
 
-    const { open, baseAmount, currency } = this.state;
+    const { open, baseAmount, currency, switchToChangeAmount } = this.state;
     const result = this.computeAmount();
 
     return (
       <div className="app">
-        <Header baseAmount={baseAmount} />
+        <Header  handle={this.handleClickOnBaseAmount} baseAmount={baseAmount} switchToChangeAmount={switchToChangeAmount} handleChangeAmount={this.handleChangeAmount}/>
         <button
           type="button"
           onClick={this.handleClick}
         >
           Toggle currencies
         </button>
-        {open && <Currencies currencies={currenciesList} />}
+        {open && <Currencies handle={this.handleClickOnCurrency} currencies={currenciesList} />}
         <Amount amount={result} currency={currency} />
       </div>
     );

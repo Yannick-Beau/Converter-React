@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 import './currencies.scss';
 
 /*
@@ -19,12 +20,13 @@ un return
 ce qu'on utilise pour key doit être unique et stable dans le temps => pas d'index
 */
 
-const Currencies = ({ currencies }) => (
+
+const Currencies = ({ currencies, handle }) => (
   <div className="currencies">
     <div className="currencies-title">Currencies</div>
     <ul>
       {currencies.map((item) => (
-        <li className="currency" key={item.name}>
+        <li onClick={handle} className="currency" key={item.name}>
           {item.name}
         </li>
       ))}

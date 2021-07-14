@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import './header.scss';
 
-const Header = ({ baseAmount }) => (
+const Header = ({ baseAmount, handle, switchToChangeAmount, handleChangeAmount }) => (
   <header className="header">
     <h1 className="header-title">Converter</h1>
-    <p className="header-amount">{baseAmount} euro</p>
+    { !switchToChangeAmount && <p onClick={handle} className="header-amount">{baseAmount} euro</p>}
+    { switchToChangeAmount  && <input onChange={handleChangeAmount} className="header-amount" type="number" />} 
   </header>
 );
 
