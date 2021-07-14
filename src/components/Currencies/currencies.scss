@@ -1,25 +1,32 @@
 @use 'src/styles/vars';
 
 .currencies {
-  border: none;
-  width: 100%;
-  color: vars.$mainColor;
-  &:focus {
-    outline: none;
-  }
-  .currency {
-    border-bottom: 1px solid vars.$altColor;
+  text-align: left;
+  background-color: vars.$lightColor;
+  max-height: 350px;
+  overflow-y: auto;
+
+  .currencies-title {
     padding: vars.$gutter;
-    font-size: 1.5em;
+    font-weight: vars.$fwBold;
+    margin-top: vars.$gutter;
+  }
+
+  .currency {
+    border-top: 1px solid vars.$altColor;
+    padding: vars.$gutter;
     font-weight: vars.$fwMedium;
     transition: background-color vars.$slowTransition;
+
+    // transition CSS : quand la propriété CSS indiquée change de valeur, la
+    // nouvelle valeur est prise en compte progressivement, pendant la durée
+    // indiquée
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/transition
+
+    // & sera remplacé par le nom du parent => .currency:hover
     &:hover {
-      background-color: rgba($color: vars.$mainColor, $alpha: 0.5);
+      background-color: vars.$altColor;
       transition: background-color vars.$fastTransition;
     }
-    &:first-child {
-      font-weight: vars.$fwBold;
-    }
   }
-  
 }

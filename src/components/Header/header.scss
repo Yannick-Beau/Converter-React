@@ -1,0 +1,16 @@
+@use 'src/styles/vars';
+
+.header {
+  background-color: vars.$mainColor;
+  color: vars.$lightColor;
+  padding: vars.$gutter * 2;
+
+  .header-title {
+    font-weight: vars.$fwBold;
+    font-size: 2em;
+  }
+
+  .header-amount {
+    margin-top: vars.$gutter;
+  }
+}
