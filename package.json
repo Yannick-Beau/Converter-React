@@ -1,5 +1,5 @@
 {
-  "name": "Converter",
+  "name": "converter",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
@@ -55,7 +55,7 @@
   },
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git@github.com:O-clock-Trinity/Spe-React-E04-converter-Yannick-Beau.git",
-  "author": "Yannick-Beau <beauyannick@gmail.com>",
+  "repository": "git@github.com:O-clock-Trinity/Spe-React-E04-converter-cecileb-oclock.git",
+  "author": "cecile <cecile@oclock.io>",
   "license": "MIT"
 }
