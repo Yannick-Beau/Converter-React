@@ -11,7 +11,7 @@ const Amount = ({ amount, currency }) => (
 );
 
 Amount.propTypes = {
-  amount: PropTypes.number.isRequired,
+  amount: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
 };
 

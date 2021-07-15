@@ -13,4 +13,12 @@
   .header-amount {
     margin-top: vars.$gutter;
   }
+
+  .header-inputAmount {
+    border: none;
+    background-color: vars.$altColor;
+    color: vars.$mainColor;
+    padding: vars.$gutter;
+    margin: vars.$gutter;
+  }
 }

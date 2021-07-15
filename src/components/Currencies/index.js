@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-
 import './currencies.scss';
 
 /*
@@ -19,14 +17,26 @@ un return
 /*
 ce qu'on utilise pour key doit être unique et stable dans le temps => pas d'index
 */
-
-
-const Currencies = ({ currencies, handle }) => (
+const Currencies = ({
+  currencies,
+  handleClickCurrency,
+  search,
+  setSearch,
+}) => (
   <div className="currencies">
+    <input
+      className="currencies-search"
+      type="text"
+      placeholder="Rechercher une devise"
+      onChange={(event) => {
+        setSearch(event.currentTarget.value);
+      }}
+      value={search}
+    />
     <div className="currencies-title">Currencies</div>
     <ul>
       {currencies.map((item) => (
-        <li onClick={handle} className="currency" key={item.name}>
+        <li onClick={() => handleClickCurrency(item.name)} className="currency" key={item.name}>
           {item.name}
         </li>
       ))}
@@ -45,6 +55,9 @@ Currencies.propTypes = {
       rate: PropTypes.number.isRequired,
     }).isRequired, // obligatoire que les éléments aient cette forme
   ).isRequired,
+  handleClickCurrency: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
 };
 
 export default Currencies;

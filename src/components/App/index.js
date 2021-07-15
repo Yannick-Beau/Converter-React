@@ -5,6 +5,7 @@ import React from 'react';
 import Header from 'src/components/Header';
 import Currencies from 'src/components/Currencies';
 import Amount from 'src/components/Amount';
+import CustomButton from 'src/components/CustomButton';
 
 import './styles.scss';
 
@@ -49,6 +50,8 @@ class App extends React.Component {
       switchToChangeAmount: false,
       baseAmount: 1,
       currency: 'United States Dollar',
+      inputSearch: '',
+      inputAmount: '',
     };
 
     // en Javascript, quand on utilise une méthode en callback (par exemple pour
@@ -59,9 +62,10 @@ class App extends React.Component {
     // on remplace la méthode handleClick par sa version améliorée à laquelle on
     // a attaché this
     this.handleClick = this.handleClick.bind(this);
-    this.handleClickOnCurrency = this.handleClickOnCurrency.bind(this);
+    this.setCurrency = this.setCurrency.bind(this);
     this.handleClickOnBaseAmount = this.handleClickOnBaseAmount.bind(this);
     this.handleChangeAmount = this.handleChangeAmount.bind(this);
+    this.setSearch = this.setSearch.bind(this);
   }
 
   // handler pour quand on clique sur le bouton
@@ -90,11 +94,10 @@ class App extends React.Component {
     // console.log(this.state.open);
   }
 
-  handleChangeAmount(event) {
-    const { switchToChangeAmount } = this.state;
+  handleChangeAmount(newAmount) {
     this.setState({
-      switchToChangeAmount: !switchToChangeAmount,
-      baseAmount: parseInt(event.target.value, 10),
+      baseAmount: parseInt(newAmount, 10),
+      inputAmount: newAmount,
     });
   }
 
@@ -108,10 +111,16 @@ class App extends React.Component {
     console.log(switchToChangeAmount);
   }
 
-  handleClickOnCurrency(event) {
+  setSearch(newValue) {
+    this.setState({
+      inputSearch: newValue,
+    });
+  }
+
+  setCurrency(newCurrency) {
     console.log('clic sur une currency !');
     this.setState({
-      currency: event.target.textContent,
+      currency: newCurrency,
     });
   }
 
@@ -126,7 +135,7 @@ class App extends React.Component {
     const rate = selectedCurrency.rate;
 
     // multiplier le montant de base par le taux de conversion
-    const result = (baseAmount * rate).toFixed(3);
+    const result = (baseAmount * rate).toFixed(2);
 
     return result;
   }
@@ -154,19 +163,36 @@ class App extends React.Component {
     {open && <Currencies currencies={currenciesList} />}
     */
 
-    const { open, baseAmount, currency, switchToChangeAmount } = this.state;
+    const {
+      open,
+      baseAmount,
+      currency,
+      switchToChangeAmount,
+      inputSearch,
+      inputAmount,
+    } = this.state;
     const result = this.computeAmount();
+
+    const filteredCurrencies = currenciesList;
 
     return (
       <div className="app">
-        <Header  handle={this.handleClickOnBaseAmount} baseAmount={baseAmount} switchToChangeAmount={switchToChangeAmount} handleChangeAmount={this.handleChangeAmount}/>
-        <button
-          type="button"
-          onClick={this.handleClick}
-        >
-          Toggle currencies
-        </button>
-        {open && <Currencies handle={this.handleClickOnCurrency} currencies={currenciesList} />}
+        <Header
+          handle={this.handleClickOnBaseAmount}
+          baseAmount={baseAmount}
+          switchToChangeAmount={switchToChangeAmount}
+          handleChangeAmount={this.handleChangeAmount}
+          inputAmount={inputAmount}
+        />
+       <CustomButton handleClick={this.handleClick} />
+        {open && (
+          <Currencies
+            handleClickCurrency={this.setCurrency}
+            currencies={filteredCurrencies}
+            search={inputSearch}
+            setSearch={this.setState}
+          />
+        )}
         <Amount amount={result} currency={currency} />
       </div>
     );

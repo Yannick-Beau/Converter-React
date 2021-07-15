@@ -29,4 +29,16 @@
       transition: background-color vars.$fastTransition;
     }
   }
+
+  .currencies-search {
+    border: none;
+    width: 100%;
+    color: vars.$mainColor;
+    font-size: 1.2em;
+    padding: vars.$gutter;
+
+    &::placeholder {
+      color: vars.$altColor;
+    }
+  }
 }
